@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "606165725086",
+    "project_id": "myquran-7a4f7",
+    "storage_bucket": "myquran-7a4f7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:606165725086:android:de2c10886d7bc5d8a2b08f",
+        "android_client_info": {
+          "package_name": "com.learning.myquran"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYS-TSQOaR-KH2SMGosClxlmejhmyFsN0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:606165725086:android:de2c10886d7bc5d8a2b08f",
+        "android_client_info": {
+          "package_name": "com.learning.myquran.stg"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYS-TSQOaR-KH2SMGosClxlmejhmyFsN0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
