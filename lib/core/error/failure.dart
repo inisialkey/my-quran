@@ -16,6 +16,19 @@ class ServerFailure extends Failure {
   int get hashCode => message.hashCode;
 }
 
+class LocalDataFailure extends Failure {
+  final String? message;
+
+  const LocalDataFailure(this.message);
+
+  @override
+  bool operator ==(Object other) =>
+      other is LocalDataFailure && other.message == message;
+
+  @override
+  int get hashCode => message.hashCode;
+}
+
 class NoDataFailure extends Failure {
   @override
   bool operator ==(Object other) => other is NoDataFailure;

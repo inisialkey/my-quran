@@ -122,12 +122,14 @@ class TextFState extends State<TextF> {
                 decoration: BoxDecoration(
                   color: widget.enabled
                       ? widget.backgroundColor ??
-                          Theme.of(context).extension<LzyctColors>()!.background
-                      : Theme.of(context).extension<LzyctColors>()!.shadow,
+                          Theme.of(context)
+                              .extension<VoyagerColors>()!
+                              .background
+                      : Theme.of(context).extension<VoyagerColors>()!.shadow,
                   border: Border.all(
                     color: _isError
-                        ? Theme.of(context).extension<LzyctColors>()!.red!
-                        : Theme.of(context).extension<LzyctColors>()!.shadow!,
+                        ? Theme.of(context).extension<VoyagerColors>()!.red!
+                        : Theme.of(context).extension<VoyagerColors>()!.shadow!,
                   ),
                   borderRadius: BorderRadius.circular(Dimens.space4),
                 ),
@@ -150,8 +152,10 @@ class TextFState extends State<TextF> {
                 widget.description!,
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       color: _isError
-                          ? Theme.of(context).extension<LzyctColors>()!.red!
-                          : Theme.of(context).extension<LzyctColors>()!.shadow,
+                          ? Theme.of(context).extension<VoyagerColors>()!.red!
+                          : Theme.of(context)
+                              .extension<VoyagerColors>()!
+                              .shadow,
                     ),
               ),
             ),
@@ -168,7 +172,7 @@ class TextFState extends State<TextF> {
                         widget.errorMessage ?? "",
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
                               color: Theme.of(context)
-                                  .extension<LzyctColors>()!
+                                  .extension<VoyagerColors>()!
                                   .red,
                             ),
                       ),
@@ -218,10 +222,10 @@ class TextFState extends State<TextF> {
                       Theme.of(context).textTheme.bodySmall?.copyWith(
                             color: _isError
                                 ? Theme.of(context)
-                                    .extension<LzyctColors>()!
+                                    .extension<VoyagerColors>()!
                                     .red!
                                 : Theme.of(context)
-                                    .extension<LzyctColors>()!
+                                    .extension<VoyagerColors>()!
                                     .subtitle!,
                             overflow: TextOverflow.ellipsis,
                           ),
@@ -231,7 +235,7 @@ class TextFState extends State<TextF> {
           floatingLabelBehavior:
               widget.hint != null ? FloatingLabelBehavior.always : null,
           hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: Theme.of(context).extension<LzyctColors>()!.subtitle,
+                color: Theme.of(context).extension<VoyagerColors>()!.subtitle,
               ),
         ),
         onChanged: (String value) =>

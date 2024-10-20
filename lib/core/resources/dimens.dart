@@ -63,6 +63,7 @@ class Dimens {
   static double surahNumber = 42.w;
   static double icBack = 24.w;
   static double quranOpacity = 280.w;
+  static double quranImage = 220.w;
 
   static double buttonH = 40.w;
   static double imageW = 110.w;

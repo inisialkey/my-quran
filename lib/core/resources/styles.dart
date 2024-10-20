@@ -99,7 +99,7 @@ ThemeData themeLight(BuildContext context) => ThemeData(
       iconTheme: const IconThemeData(color: Palette.primary),
       visualDensity: VisualDensity.adaptivePlatformDensity,
       extensions: const <ThemeExtension<dynamic>>[
-        LzyctColors(
+        VoyagerColors(
           background: Palette.background,
           card: Palette.card,
           buttonText: Palette.text,
@@ -218,7 +218,7 @@ ThemeData themeDark(BuildContext context) => ThemeData(
       iconTheme: const IconThemeData(color: Palette.primary),
       visualDensity: VisualDensity.adaptivePlatformDensity,
       extensions: const <ThemeExtension<dynamic>>[
-        LzyctColors(
+        VoyagerColors(
           background: Palette.backgroundDark,
           buttonText: Palette.textDark,
           card: Palette.cardDark,
@@ -242,7 +242,7 @@ ThemeData themeDark(BuildContext context) => ThemeData(
       ],
     );
 
-class LzyctColors extends ThemeExtension<LzyctColors> {
+class VoyagerColors extends ThemeExtension<VoyagerColors> {
   final Color? background;
   final Color? card;
   final Color? buttonText;
@@ -263,7 +263,7 @@ class LzyctColors extends ThemeExtension<LzyctColors> {
   final Color? lavender;
   final Color? red;
 
-  const LzyctColors({
+  const VoyagerColors({
     this.background,
     this.card,
     this.buttonText,
@@ -286,7 +286,7 @@ class LzyctColors extends ThemeExtension<LzyctColors> {
   });
 
   @override
-  ThemeExtension<LzyctColors> copyWith({
+  ThemeExtension<VoyagerColors> copyWith({
     Color? background,
     Color? card,
     Color? buttonText,
@@ -307,7 +307,7 @@ class LzyctColors extends ThemeExtension<LzyctColors> {
     Color? lavender,
     Color? red,
   }) {
-    return LzyctColors(
+    return VoyagerColors(
       background: background ?? this.background,
       card: card ?? this.card,
       buttonText: buttonText ?? this.buttonText,
@@ -331,14 +331,14 @@ class LzyctColors extends ThemeExtension<LzyctColors> {
   }
 
   @override
-  ThemeExtension<LzyctColors> lerp(
-    covariant ThemeExtension<LzyctColors>? other,
+  ThemeExtension<VoyagerColors> lerp(
+    covariant ThemeExtension<VoyagerColors>? other,
     double t,
   ) {
-    if (other is! LzyctColors) {
+    if (other is! VoyagerColors) {
       return this;
     }
-    return LzyctColors(
+    return VoyagerColors(
       background: Color.lerp(background, other.background, t),
       card: Color.lerp(card, other.card, t),
       buttonText: Color.lerp(buttonText, other.buttonText, t),
@@ -389,7 +389,7 @@ class BoxShadows {
 
   BoxShadow get button => BoxShadow(
         color: Theme.of(context)
-            .extension<LzyctColors>()!
+            .extension<VoyagerColors>()!
             .shadow!
             .withOpacity(0.5),
         blurRadius: 16.0,
@@ -398,7 +398,7 @@ class BoxShadows {
 
   BoxShadow get card => BoxShadow(
         color: Theme.of(context)
-            .extension<LzyctColors>()!
+            .extension<VoyagerColors>()!
             .shadow!
             .withOpacity(0.5),
         blurRadius: 5.0,
@@ -406,19 +406,19 @@ class BoxShadows {
       );
 
   BoxShadow get dialog => BoxShadow(
-        color: Theme.of(context).extension<LzyctColors>()!.shadow!,
+        color: Theme.of(context).extension<VoyagerColors>()!.shadow!,
         offset: const Offset(0, -4),
         blurRadius: 16.0,
       );
 
   BoxShadow get dialogAlt => BoxShadow(
-        color: Theme.of(context).extension<LzyctColors>()!.shadow!,
+        color: Theme.of(context).extension<VoyagerColors>()!.shadow!,
         offset: const Offset(0, 4),
         blurRadius: 16.0,
       );
 
   BoxShadow get buttonMenu => BoxShadow(
-        color: Theme.of(context).extension<LzyctColors>()!.shadow!,
+        color: Theme.of(context).extension<VoyagerColors>()!.shadow!,
         blurRadius: 4.0,
       );
 }

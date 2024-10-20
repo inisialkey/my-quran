@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:myquran/core/core.dart';
-import 'package:myquran/features/detail_surah/pages/cubit/detail_surah_cubit.dart';
 import 'package:myquran/features/features.dart';
 import 'package:show_up_animation/show_up_animation.dart';
 
@@ -16,13 +16,16 @@ class DetailSurahPage extends StatefulWidget {
   State<DetailSurahPage> createState() => _DetailSurahPageState();
 }
 
-class _DetailSurahPageState extends State<DetailSurahPage> {
+class _DetailSurahPageState extends State<DetailSurahPage> with RouteAware {
   @override
   void initState() {
-    context
-        .read<DetailSurahCubit>()
-        .fetchData(DetailSurahParams(surahNumber: widget.surahNumber));
     super.initState();
+    Future.microtask(() {
+      context
+          .read<DetailSurahCubit>()
+          .fetchData(DetailSurahParams(surahNumber: widget.surahNumber));
+      context.read<LastReadSurahCubit>().getLastReadSurah();
+    });
   }
 
   @override
@@ -35,6 +38,12 @@ class _DetailSurahPageState extends State<DetailSurahPage> {
               child: Loading(),
             ),
             success: (data) {
+              if (context.read<LastReadSurahCubit>().state.data.isEmpty) {
+                context.read<LastReadSurahCubit>().addLastReadSurah(data);
+              } else {
+                context.read<LastReadSurahCubit>().updateLastRead(data);
+              }
+
               return SafeArea(
                 child: Padding(
                   padding: EdgeInsets.symmetric(
@@ -47,7 +56,7 @@ class _DetailSurahPageState extends State<DetailSurahPage> {
                         child: Row(
                           children: [
                             InkWell(
-                              onTap: () => Navigator.pop(context),
+                              onTap: () => context.pop(),
                               child: Icon(
                                 Icons.arrow_back,
                                 size: Dimens.icBack,
@@ -98,22 +107,11 @@ class _DetailSurahPageState extends State<DetailSurahPage> {
                                             const NeverScrollableScrollPhysics(),
                                         itemCount: data.data?.verses?.length,
                                         itemBuilder: (context, index) {
-                                          final versesData =
-                                              data.data?.verses?[index];
                                           return VersesWidget(
-                                            transliteration: versesData?.text
-                                                    ?.transliteration?.en ??
-                                                "",
-                                            translation:
-                                                versesData?.translation?.id ??
-                                                    "",
-                                            arab: versesData?.text?.arab ?? "",
-                                            numberInSurah:
-                                                versesData?.number?.inSurah ??
-                                                    0,
-                                            audioPrimary:
-                                                versesData?.audio?.primary ??
-                                                    "",
+                                            verses: data.data!.verses![index],
+                                            surah: data.data?.name
+                                                    ?.transliteration?.id ??
+                                                '',
                                           );
                                         },
                                       ),

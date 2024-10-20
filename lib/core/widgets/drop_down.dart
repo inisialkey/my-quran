@@ -52,14 +52,14 @@ class _DropDownState<T> extends State<DropDown<T>> {
             padding: EdgeInsets.zero,
             child: DropdownButtonFormField<T>(
               isExpanded: true,
-              dropdownColor: Theme.of(context).extension<LzyctColors>()!.card,
+              dropdownColor: Theme.of(context).extension<VoyagerColors>()!.card,
               icon: const Icon(Icons.arrow_drop_down),
               decoration: InputDecoration(
                 alignLabelWithHint: true,
                 isDense: true,
                 isCollapsed: true,
                 filled: true,
-                fillColor: Theme.of(context).extension<LzyctColors>()!.card,
+                fillColor: Theme.of(context).extension<VoyagerColors>()!.card,
                 prefixIcon: Padding(
                   padding: EdgeInsets.only(left: Dimens.space12),
                   child: widget.prefixIcon,
@@ -73,7 +73,7 @@ class _DropDownState<T> extends State<DropDown<T>> {
                   gapPadding: 0,
                   borderRadius: BorderRadius.circular(Dimens.space4),
                   borderSide: BorderSide(
-                    color: Theme.of(context).extension<LzyctColors>()!.card!,
+                    color: Theme.of(context).extension<VoyagerColors>()!.card!,
                   ),
                 ),
                 border: OutlineInputBorder(
@@ -90,21 +90,21 @@ class _DropDownState<T> extends State<DropDown<T>> {
                   gapPadding: 0,
                   borderRadius: BorderRadius.circular(Dimens.space4),
                   borderSide: BorderSide(
-                    color: Theme.of(context).extension<LzyctColors>()!.red!,
+                    color: Theme.of(context).extension<VoyagerColors>()!.red!,
                   ),
                 ),
                 errorBorder: OutlineInputBorder(
                   gapPadding: 0,
                   borderRadius: BorderRadius.circular(Dimens.space4),
                   borderSide: BorderSide(
-                    color: Theme.of(context).extension<LzyctColors>()!.red!,
+                    color: Theme.of(context).extension<VoyagerColors>()!.red!,
                   ),
                 ),
                 focusedBorder: OutlineInputBorder(
                   gapPadding: 0,
                   borderRadius: BorderRadius.circular(Dimens.space4),
                   borderSide: BorderSide(
-                    color: Theme.of(context).extension<LzyctColors>()!.pink!,
+                    color: Theme.of(context).extension<VoyagerColors>()!.pink!,
                   ),
                 ),
               ),

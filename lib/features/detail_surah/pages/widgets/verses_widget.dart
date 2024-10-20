@@ -1,24 +1,20 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:myquran/core/core.dart';
+import 'package:myquran/features/features.dart';
 
 class VersesWidget extends StatefulWidget {
-  final String transliteration;
-  final String translation;
-  final String arab;
-  final int numberInSurah;
-  final String audioPrimary;
+  final String surah;
+  final Verse verses;
   final AudioPlayer player = AudioPlayer();
 
   VersesWidget({
     super.key,
-    required this.transliteration,
-    required this.translation,
-    required this.arab,
-    required this.numberInSurah,
-    required this.audioPrimary,
+    required this.verses,
+    required this.surah,
   });
 
   @override
@@ -31,12 +27,28 @@ class _VersesWidgetState extends State<VersesWidget> {
   @override
   void initState() {
     super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      await context
+          .read<BookmarkVersesCubit>()
+          .loadBookmarkVerses(widget.verses.number?.inQuran ?? 0);
+
+      if (context.read<BookmarkVersesCubit>().state.isBookmark) {
+        setState(() {
+          isBookmark = true;
+        });
+      } else {
+        setState(() {
+          isBookmark = false;
+        });
+      }
+    });
   }
 
   Future<void> setAudioUrl() async {
     try {
       await widget.player.setAudioSource(
-        AudioSource.uri(Uri.parse(widget.audioPrimary)),
+        AudioSource.uri(Uri.parse(widget.verses.audio?.primary ?? '')),
       );
     } catch (e) {
       log("Error loading audio source: $e");
@@ -82,7 +94,7 @@ class _VersesWidgetState extends State<VersesWidget> {
                   ),
                   child: Center(
                     child: Text(
-                      widget.numberInSurah.toString(),
+                      widget.verses.number?.inSurah.toString() ?? '',
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                             color: Colors.white,
                             fontWeight: FontWeight.w500,
@@ -148,18 +160,62 @@ class _VersesWidgetState extends State<VersesWidget> {
                 SpacerH(
                   value: Dimens.space12,
                 ),
-                InkWell(
-                  onTap: () async {},
-                  child: isBookmark
-                      ? Icon(
-                          Icons.bookmark_rounded,
-                          size: Dimens.space24,
-                          color: Palette.secondary,
-                        )
-                      : Image.asset(
-                          Images.icBookmark,
-                          width: Dimens.space16,
-                        ),
+                BlocBuilder<BookmarkVersesCubit, BookmarkVersesState>(
+                  builder: (context, state) {
+                    final isAddedBookmark = state.isBookmark;
+
+                    return InkWell(
+                      onTap: () async {
+                        if (isAddedBookmark) {
+                          await context
+                              .read<BookmarkVersesCubit>()
+                              .removeBookmarkVerses(
+                                BookmarkVersesParams(
+                                  bookmarkVerses: widget.verses,
+                                  surah: widget.surah,
+                                ),
+                              );
+
+                          context.showCustomFlashMessage(
+                            status: 'success',
+                            title: 'Hapus Bookmark Ayat',
+                            message:
+                                'Surah ${widget.surah} Ayat ${widget.verses.number?.inSurah} berhasil dihapus dari Bookmark',
+                          );
+                        } else {
+                          await context
+                              .read<BookmarkVersesCubit>()
+                              .saveBookmarkVerses(
+                                BookmarkVersesParams(
+                                  bookmarkVerses: widget.verses,
+                                  surah: widget.surah,
+                                ),
+                              );
+
+                          context.showCustomFlashMessage(
+                            status: 'success',
+                            title: 'Tambah Bookmark Ayat',
+                            message:
+                                'Surah ${widget.surah} Ayat ${widget.verses.number?.inSurah} berhasil ditambah ke Bookmark',
+                          );
+                        }
+
+                        setState(() {
+                          isBookmark = !isAddedBookmark;
+                        });
+                      },
+                      child: isBookmark
+                          ? Icon(
+                              Icons.bookmark_rounded,
+                              size: Dimens.space24,
+                              color: Palette.secondary,
+                            )
+                          : Image.asset(
+                              Images.icBookmark,
+                              width: Dimens.space16,
+                            ),
+                    );
+                  },
                 ),
                 SpacerH(
                   value: Dimens.space6,
@@ -173,7 +229,7 @@ class _VersesWidgetState extends State<VersesWidget> {
           Align(
             alignment: Alignment.centerRight,
             child: Text(
-              widget.arab,
+              widget.verses.text?.arab ?? '',
               textAlign: TextAlign.right,
               style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                     fontSize: 28,
@@ -186,7 +242,7 @@ class _VersesWidgetState extends State<VersesWidget> {
             value: Dimens.space18,
           ),
           Text(
-            widget.transliteration,
+            widget.verses.text?.transliteration?.en ?? '',
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
                   fontWeight: FontWeight.w400,
                   fontStyle: FontStyle.italic,
@@ -194,7 +250,7 @@ class _VersesWidgetState extends State<VersesWidget> {
                 ),
           ),
           Text(
-            widget.translation,
+            widget.verses.translation?.id ?? '',
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
                   fontWeight: FontWeight.w400,
                   color: Palette.darkPurple.withOpacity(0.7),

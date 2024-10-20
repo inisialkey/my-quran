@@ -1,16 +1,75 @@
-# myquran
+<br>
 
-A new Flutter project.
+# MyQuran 📱
 
-## Getting Started
+It’s an Islamic application that contains quran.
+<br>This app also implementing **Flutter Clean Architecture with TDD.**
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## Pre-requisites 📐
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+| Technology | Recommended Version | Installation Guide                                                    |
+|------------|---------------------|-----------------------------------------------------------------------|
+| Flutter    | v3.22.x             | [Flutter Official Docs](https://flutter.dev/docs/get-started/install) |
+| Dart       | v3.4.x              | Installed automatically with Flutter                                  |
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+## Get Started 🚀
+
+- Clone this project
+- Run `flutter pub get`
+- Run `flutter gen-l10n` to generate localization files
+- Run `flutter pub run build_runner build --delete-conflicting-outputs` to generate freezes files
+- Run `flutter run --flavor stg -t lib/main.dart --dart-define-from-file .env.stg.json` for **staging** or
+- Run `flutter run --flavor prd -t lib/main.dart --dart-define-from-file .env.prd.json` for **production**
+- Run Test `flutter test`
+- To generate launcher icon based on Flavor `dart run flutter_launcher_icons`
+- To generate mock class `dart pub run build_runner build`
+
+
+## Feature ✅
+
+- [x] BLoC State Management
+- [x] **Clean Architecture with TDD**
+- [x] Show All Surah
+- [x] Last Read Surah
+- [x] Detail Surah & Verses
+- [x] Bookmark Verses
+- [x] Play Audio Verses
+
+
+## Maestro Test 🧪
+
+- Install Maestro on your machine [Maestro](https://maestro.mobile.dev/getting-started/installing-maestro)
+- Run this command to run the test
+  ```bash
+   maestro test maestro-stg/main.yaml
+  ```
+  
+https://github.com/user-attachments/assets/e30f1e0d-eccc-4624-b5c0-4d9495352f35
+
+
+## Architecture Proposal by [Resocoder](https://github.com/ResoCoder/flutter-tdd-clean-architecture-course)
+
+<br>
+
+![architecture-proposal](./architecture-proposal.png)
+
+
+### Resources 🔥
+
+* [API Source](https://github.com/gadingnst/quran-api)
+* [Design Reference](https://www.figma.com/community/file/966921639679380402)
+
+
+## Hire Me 🤝
+
+<table style="border:none; border-collapse:collapse; cellspacing:0; cellpadding:0">
+    <tr>
+        <td>
+           <a href="https://www.linkedin.com/in/oki-6ba305173/" target="_blank">
+              <img src="https://github.com/inisialkey/inisialkey/blob/main/assets/linkedin.svg" alt="LinkedIn" style="vertical-align:top; margin:4px" height=24>
+          </a>
+        </td>
+    </tr>
+</table>

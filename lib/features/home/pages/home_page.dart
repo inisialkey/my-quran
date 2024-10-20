@@ -12,11 +12,31 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with RouteAware {
   @override
   void initState() {
     super.initState();
-    context.read<SurahCubit>().fetchData();
+    Future.microtask(() {
+      context.read<SurahCubit>().fetchData();
+      context.read<LastReadSurahCubit>().getLastReadSurah();
+    });
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    AppRoute.routeObserver.subscribe(this, ModalRoute.of(context)!);
+  }
+
+  @override
+  void dispose() {
+    AppRoute.routeObserver.unsubscribe(this);
+    super.dispose();
+  }
+
+  @override
+  void didPopNext() {
+    context.read<LastReadSurahCubit>().getLastReadSurah();
   }
 
   @override
@@ -53,7 +73,9 @@ class _HomePageState extends State<HomePage> {
                     ),
                     const Spacer(),
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        context.goNamed(Routes.bookmarkVerses.name);
+                      },
                       child: Image.asset(
                         Images.icBookmark,
                         width: Dimens.space16,

@@ -7,8 +7,8 @@ part 'surah_state.dart';
 part 'surah_cubit.freezed.dart';
 
 class SurahCubit extends Cubit<SurahState> {
-  SurahCubit(this._getSurah) : super(const _Loading());
   final GetSurah _getSurah;
+  SurahCubit(this._getSurah) : super(const _Loading());
 
   Future<void> fetchData() async {
     emit(const _Loading());
