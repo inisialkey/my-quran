@@ -1,5 +1,3 @@
-<br>
-
 # MyQuran 📱
 
 It’s an Islamic application that contains quran.
@@ -36,17 +34,6 @@ It’s an Islamic application that contains quran.
 - [x] Detail Surah & Verses
 - [x] Bookmark Verses
 - [x] Play Audio Verses
-
-
-## Maestro Test 🧪
-
-- Install Maestro on your machine [Maestro](https://maestro.mobile.dev/getting-started/installing-maestro)
-- Run this command to run the test
-  ```bash
-   maestro test maestro-stg/main.yaml
-  ```
-  
-https://github.com/user-attachments/assets/e30f1e0d-eccc-4624-b5c0-4d9495352f35
 
 
 ## Architecture Proposal by [Resocoder](https://github.com/ResoCoder/flutter-tdd-clean-architecture-course)
