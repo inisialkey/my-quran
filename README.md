@@ -3,6 +3,8 @@
 It’s an Islamic application that contains quran.
 <br>This app also implementing **Flutter Clean Architecture with TDD.**
 
+(https://github.com/inisialkey/inisialkey/blob/main/assets/coffee-shop-clone-ui.png)
+
 
 ## Pre-requisites 📐
 

@@ -32,7 +32,7 @@ class _VersesWidgetState extends State<VersesWidget> {
       await context
           .read<BookmarkVersesCubit>()
           .loadBookmarkVerses(widget.verses.number?.inQuran ?? 0);
-
+      if (!mounted) return;
       if (context.read<BookmarkVersesCubit>().state.isBookmark) {
         setState(() {
           isBookmark = true;
@@ -176,12 +176,14 @@ class _VersesWidgetState extends State<VersesWidget> {
                                 ),
                               );
 
-                          context.showCustomFlashMessage(
-                            status: 'success',
-                            title: 'Hapus Bookmark Ayat',
-                            message:
-                                'Surah ${widget.surah} Ayat ${widget.verses.number?.inSurah} berhasil dihapus dari Bookmark',
-                          );
+                          if (context.mounted) {
+                            context.showCustomFlashMessage(
+                              status: 'success',
+                              title: 'Hapus Bookmark Ayat',
+                              message:
+                                  'Surah ${widget.surah} Ayat ${widget.verses.number?.inSurah} berhasil dihapus dari Bookmark',
+                            );
+                          }
                         } else {
                           await context
                               .read<BookmarkVersesCubit>()
@@ -192,12 +194,14 @@ class _VersesWidgetState extends State<VersesWidget> {
                                 ),
                               );
 
-                          context.showCustomFlashMessage(
-                            status: 'success',
-                            title: 'Tambah Bookmark Ayat',
-                            message:
-                                'Surah ${widget.surah} Ayat ${widget.verses.number?.inSurah} berhasil ditambah ke Bookmark',
-                          );
+                          if (context.mounted) {
+                            context.showCustomFlashMessage(
+                              status: 'success',
+                              title: 'Tambah Bookmark Ayat',
+                              message:
+                                  'Surah ${widget.surah} Ayat ${widget.verses.number?.inSurah} berhasil ditambah ke Bookmark',
+                            );
+                          }
                         }
 
                         setState(() {
