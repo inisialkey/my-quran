@@ -68,7 +68,7 @@ class _BookmarkVersesWidgetState extends State<BookmarkVersesWidget> {
               horizontal: Dimens.space13,
             ),
             decoration: BoxDecoration(
-              color: Palette.primary.withOpacity(0.065),
+              color: Palette.primary.withValues(alpha: 0.065),
               borderRadius: BorderRadius.circular(14.0),
             ),
             child: Row(
@@ -197,7 +197,7 @@ class _BookmarkVersesWidgetState extends State<BookmarkVersesWidget> {
             widget.translation,
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
                   fontWeight: FontWeight.w400,
-                  color: Palette.darkPurple.withOpacity(0.7),
+                  color: Palette.darkPurple.withValues(alpha: 0.7),
                 ),
           ),
         ],

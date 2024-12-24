@@ -84,7 +84,7 @@ class BannerVersesWidget extends StatelessWidget {
                       revelation,
                       style: Theme.of(context).textTheme.titleSmall?.copyWith(
                             fontWeight: FontWeight.w400,
-                            color: Colors.white.withOpacity(0.9),
+                            color: Colors.white.withValues(alpha: 0.9),
                           ),
                     ),
                     SpacerH(
@@ -92,7 +92,7 @@ class BannerVersesWidget extends StatelessWidget {
                     ),
                     Icon(
                       Icons.circle,
-                      color: Colors.white.withOpacity(0.5),
+                      color: Colors.white.withValues(alpha: 0.5),
                       size: 5,
                     ),
                     SpacerH(
@@ -101,7 +101,7 @@ class BannerVersesWidget extends StatelessWidget {
                     Text(
                       '$numberOfVerses Ayat',
                       style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                            color: Colors.white.withOpacity(0.9),
+                            color: Colors.white.withValues(alpha: 0.9),
                             fontWeight: FontWeight.w400,
                           ),
                     ),

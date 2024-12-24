@@ -60,7 +60,7 @@ class ListSurahWidget extends StatelessWidget {
                         surahRevelation ?? '',
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                               fontWeight: FontWeight.w400,
-                              color: Palette.grey.withOpacity(0.8),
+                              color: Palette.grey.withValues(alpha: 0.8),
                             ),
                       ),
                       SpacerH(
@@ -68,7 +68,7 @@ class ListSurahWidget extends StatelessWidget {
                       ),
                       Icon(
                         Icons.circle,
-                        color: Palette.grey.withOpacity(0.8),
+                        color: Palette.grey.withValues(alpha: 0.8),
                         size: 4,
                       ),
                       SpacerH(
@@ -78,7 +78,7 @@ class ListSurahWidget extends StatelessWidget {
                         '$surahNumberOfVerses Ayat',
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                               fontWeight: FontWeight.w400,
-                              color: Palette.grey.withOpacity(0.8),
+                              color: Palette.grey.withValues(alpha: 0.8),
                             ),
                       ),
                     ],
@@ -102,7 +102,7 @@ class ListSurahWidget extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 5.0),
             child: Divider(
               thickness: 1,
-              color: Palette.grey.withOpacity(0.25),
+              color: Palette.grey.withValues(alpha: 0.25),
             ),
           ),
         ],

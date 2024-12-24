@@ -391,7 +391,7 @@ class BoxShadows {
         color: Theme.of(context)
             .extension<VoyagerColors>()!
             .shadow!
-            .withOpacity(0.5),
+            .withValues(alpha: 0.5),
         blurRadius: 16.0,
         spreadRadius: 1.0,
       );
@@ -400,7 +400,7 @@ class BoxShadows {
         color: Theme.of(context)
             .extension<VoyagerColors>()!
             .shadow!
-            .withOpacity(0.5),
+            .withValues(alpha: 0.5),
         blurRadius: 5.0,
         spreadRadius: 0.5,
       );

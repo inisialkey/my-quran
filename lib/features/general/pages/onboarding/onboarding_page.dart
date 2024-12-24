@@ -36,7 +36,7 @@ class OnBoardingPage extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.w400,
-                        color: Palette.grey.withOpacity(0.8),
+                        color: Palette.grey.withValues(alpha: 0.8),
                       ),
                 ),
               ),

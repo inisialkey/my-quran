@@ -104,7 +104,7 @@ class _HomePageState extends State<HomePage> with RouteAware {
                   "Assalamu'alaikum",
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.w500,
-                        color: Palette.grey.withOpacity(0.9),
+                        color: Palette.grey.withValues(alpha: 0.9),
                         letterSpacing: 0.0,
                       ),
                 ),

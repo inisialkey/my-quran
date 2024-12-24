@@ -78,12 +78,14 @@ class BannerLastReadWidget extends StatelessWidget {
                             state.data.isEmpty
                                 ? '-'
                                 : state.data[0].revelation!,
-                            style:
-                                Theme.of(context).textTheme.bodySmall?.copyWith(
-                                      fontSize: 13.sp,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.white.withOpacity(0.8),
-                                    ),
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodySmall
+                                ?.copyWith(
+                                  fontSize: 13.sp,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.white.withValues(alpha: 0.8),
+                                ),
                           ),
                         ),
                         SpacerH(
@@ -92,7 +94,7 @@ class BannerLastReadWidget extends StatelessWidget {
                         ShowUpAnimation(
                           child: Icon(
                             Icons.circle,
-                            color: Colors.white.withOpacity(0.8),
+                            color: Colors.white.withValues(alpha: 0.8),
                             size: 4,
                           ),
                         ),
@@ -100,12 +102,14 @@ class BannerLastReadWidget extends StatelessWidget {
                         ShowUpAnimation(
                           child: Text(
                             '${state.data.isEmpty ? '-' : state.data[0].numberOfVerses} Ayat',
-                            style:
-                                Theme.of(context).textTheme.bodySmall?.copyWith(
-                                      fontSize: 13.sp,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.white.withOpacity(0.8),
-                                    ),
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodySmall
+                                ?.copyWith(
+                                  fontSize: 13.sp,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.white.withValues(alpha: 0.8),
+                                ),
                           ),
                         ),
                       ],
